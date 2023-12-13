@@ -40,6 +40,29 @@ class CafeKioskTest {
     }
 
     @Test
+    @DisplayName("테스트 케이스 세분화하기 - 해피 케이스 : 경계값 테스트")
+    void addSeveralBeverage() {
+        CafeKiosk cafeKiosk = new CafeKiosk();
+        Americano americano = new Americano();
+
+        cafeKiosk.add(americano, 2);
+
+        assertThat(cafeKiosk.getBeverages().get(0)).isEqualTo(americano);
+        assertThat(cafeKiosk.getBeverages().get(1)).isEqualTo(americano);
+    }
+
+    @Test
+    @DisplayName("테스트 케이스 세분화하기 - 예외 케이스 : 경계값 테스트")
+    void addZeroBeverage() {
+        CafeKiosk cafeKiosk = new CafeKiosk();
+        Americano americano = new Americano();
+
+        assertThatThrownBy(() -> cafeKiosk.add(americano, 0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("음료는 1잔 이상 주문할 수 있습니다.");
+    }
+
+    @Test
     @DisplayName("카페 키오스크 삭제 테스트 ")
     void remove() {
         CafeKiosk cafeKiosk = new CafeKiosk();

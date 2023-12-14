@@ -52,4 +52,9 @@ public class CafeKiosk {
     public Order createOrder() {
         return new Order(LocalDateTime.now(), beverages);
     }
+    
+    public int calculateTotalPriceTdd()
+    {
+        return beverages.stream().mapToInt(Beverage::getPrice).sum();
+    }
 }

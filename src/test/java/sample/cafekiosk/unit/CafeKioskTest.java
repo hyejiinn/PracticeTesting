@@ -90,5 +90,21 @@ class CafeKioskTest {
         assertThat(cafeKiosk.getBeverages()).isEmpty();
 
     }
+    
+    @Test
+    @DisplayName("TDD로 calculateTotalPrice 메서드 작성해보기 ")
+    void calculateTotalPrice()
+    {
+        CafeKiosk cafeKiosk = new CafeKiosk();
+        Americano americano = new Americano();
+        Latte latte = new Latte();
+    
+        cafeKiosk.add(americano);
+        cafeKiosk.add(latte);
+    
+        int totalPrice = cafeKiosk.calculateTotalPriceTdd();
+    
+        assertThat(totalPrice).isEqualTo(8500);
+    }
 
 }

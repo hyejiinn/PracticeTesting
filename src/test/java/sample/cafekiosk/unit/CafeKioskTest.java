@@ -29,7 +29,8 @@ class CafeKioskTest {
     }
 
     @Test
-    @DisplayName("자동화된 테스트")
+//    @DisplayName("자동화된 테스트 : 음료 1개 추가 테스트")
+    @DisplayName("음료 1개를 추가하면 주문 목록에 담긴다.")
     void add() {
         CafeKiosk cafeKiosk = new CafeKiosk();
         cafeKiosk.add(new Americano());
@@ -91,20 +92,25 @@ class CafeKioskTest {
 
     }
     
+//    @DisplayName("TDD로 calculateTotalPrice 메서드 작성해보기 ")
     @Test
-    @DisplayName("TDD로 calculateTotalPrice 메서드 작성해보기 ")
+    @DisplayName("주문 목록에 담긴 상품들의 총 금액을 계산할 수 있다.")
     void calculateTotalPrice()
     {
+        // given
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
         Latte latte = new Latte();
     
         cafeKiosk.add(americano);
         cafeKiosk.add(latte);
-    
+        
+        // when
         int totalPrice = cafeKiosk.calculateTotalPriceTdd();
     
+        // then
         assertThat(totalPrice).isEqualTo(8500);
     }
+    
 
 }

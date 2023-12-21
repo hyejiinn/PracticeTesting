@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -23,7 +24,7 @@ import static sample.cafekiosk.spring.domain.product.ProductType.*;
  */
 // Spring 서버를 띄워서 테스트를 하는데 스프링 부트 테스트보다 가벼운 편이다. (속도가 좀 더 빠르다.)
 @ActiveProfiles("test")
-//@DataJdbcTest  // 강사님은 SpringBootTest를 좀 더 선호한다고는 함 ㅋㅋ (그리고 난 실행도 안됨;;)
+//@DataJpaTest // 강사님은 SpringBootTest를 좀 더 선호한다고는 함 ㅋㅋ
 @SpringBootTest // Spring 서버를 띄워서 테스트
 class ProductRepositoryTest
 {

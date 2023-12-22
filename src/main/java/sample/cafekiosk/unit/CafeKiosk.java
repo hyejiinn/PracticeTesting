@@ -70,4 +70,9 @@ public class CafeKiosk {
 
         return new Order(currentDateTime, beverages);
     }
+    
+    public int calculateTotalPriceTdd()
+    {
+        return beverages.stream().mapToInt(Beverage::getPrice).sum();
+    }
 }

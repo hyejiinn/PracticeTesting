@@ -6,6 +6,7 @@ import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -22,9 +23,10 @@ import static sample.cafekiosk.spring.domain.product.ProductType.HANDMADE;
  * - 그리고 현재는 이렇지만 나중에 어떻게 변할지 모르기 때문에 테스트는 해야 한다 !
  */
 // Spring 서버를 띄워서 테스트를 하는데 스프링 부트 테스트보다 가벼운 편이다. (속도가 좀 더 빠르다.)
+// @DataJpaTest vs @SpringBootTest 차이 중 하나는 @Transactional 애노테이션의 유무가 있다.
 @ActiveProfiles("test")
-//@DataJpaTest // 강사님은 SpringBootTest를 좀 더 선호한다고는 함 ㅋㅋ
-@SpringBootTest // Spring 서버를 띄워서 테스트
+@DataJpaTest // 강사님은 SpringBootTest를 좀 더 선호한다고는 함 ㅋㅋ
+//@SpringBootTest // Spring 서버를 띄워서 테스트
 class ProductRepositoryTest
 {
 	@Autowired

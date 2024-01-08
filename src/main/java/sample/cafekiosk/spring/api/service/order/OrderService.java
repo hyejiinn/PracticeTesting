@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import sample.cafekiosk.spring.api.controller.order.request.OrderCreateRequest;
+import sample.cafekiosk.spring.api.service.order.request.OrderCreateServiceRequest;
 import sample.cafekiosk.spring.api.service.order.response.OrderResponse;
 import sample.cafekiosk.spring.domain.order.Order;
 import sample.cafekiosk.spring.domain.order.OrderRepository;
@@ -36,7 +37,7 @@ public class OrderService
 	 * 키오스크가 두대 이상인데 동시에 주문을 하면..?
 	 * 보통 -> optimistic lock / pessimistic lock/ ... 해결...
 	 */
-	public OrderResponse createOrder(OrderCreateRequest request, LocalDateTime registeredDateTime)
+	public OrderResponse createOrder(OrderCreateServiceRequest request, LocalDateTime registeredDateTime)
 	{
 		// 주문 생성과 관련된 비지니스 로직 담는 메서드
 		List<String> productNumbers = request.getProductNumbers();

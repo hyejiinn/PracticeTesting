@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import sample.cafekiosk.spring.api.service.product.ProductService;
 import sample.cafekiosk.spring.api.service.product.response.ProductResponse;
@@ -21,8 +23,8 @@ public class ProductController
 	 * 새로운 상품 등록
 	 */
 	@PostMapping("/api/v1/products/new")
-	public void createProduct(ProductCreateRequest request) {
-		productService.createProduct(request);
+	public ProductResponse createProduct(@Valid @RequestBody ProductCreateRequest request) {
+		return productService.createProduct(request);
 	}
 	
 	/**

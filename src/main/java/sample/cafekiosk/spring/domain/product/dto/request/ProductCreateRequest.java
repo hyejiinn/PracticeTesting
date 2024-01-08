@@ -1,17 +1,28 @@
 package sample.cafekiosk.spring.domain.product.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import sample.cafekiosk.spring.domain.product.Product;
 import sample.cafekiosk.spring.domain.product.ProductSellingStatus;
 import sample.cafekiosk.spring.domain.product.ProductType;
 
 @Getter
+@NoArgsConstructor // ObjectMapper가 직렬화/역직렬화 기능을 수행할 때 기본 생성자를 통해 만들기 때문에 필요
 public class ProductCreateRequest {
 
+    @NotNull
     private ProductType type;
+    
+    @NotNull
     private ProductSellingStatus sellingStatus;
+    @NotBlank
     private String name;
+    
+    @Positive
     private int price;
 
     @Builder
